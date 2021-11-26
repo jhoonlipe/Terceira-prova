@@ -1,0 +1,27 @@
+
+body{
+   background-image: url(imagens/maxresdefault.jpg);
+   background-size: cover; 
+   text-align: center;
+   
+}
+main {
+ 
+    font-size: 30px;
+    background-color: white;
+    
+}
+#butao {
+    font-size: 25px;
+    border-radius: 5px;
+    border-width: 5px;
+}
+#modelo {
+    font-size: 15px;
+}
+#preco {
+    font-size: 15px;
+}
+#parcela {
+    font-size: 15px;
+}
