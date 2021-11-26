@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação</title>
+</head>
+<body>
+    <style>
+        body{
+            background-color: rgb(115, 172, 194);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        main {
+         
+            font-size: 30px;
+        }
+        #butao {
+            font-size: 25px;
+            border-radius: 5px;
+            border-width: 5px;
+        }
+        #modelo {
+            font-size: 15px;
+        }
+        #preco {
+            font-size: 15px;
+        }
+        #parcela {
+            font-size: 15px;
+        }
+    </style>
+    <main>
+        <h1>Financiando Carros</h1>  
+        <form action="salvar.php" method="get" onsubmit="return calcule()">
+
+            <label for="modelo">Modelo:</label>
+            <input type="text" name="modelo" id="modelo" size="10"><br>
+
+            <br><label for="preco">Preço:</label>
+            <input type="number" name="preco" id="preco" min="1" max="10000000"><br>
+            <br><label for="parcela">Parcelas:</label>
+            <input type="number" name="parcela" id="parcela" min="1" max="36"><br>
+            <br><input type="submit" value="Financie!" id="butao">
+            <p id="resultado">O resultado aqui..</p>
+        </form>
+    </main>
+    <script>
+        let resultado = document.getElementById("resultado")
+        function calcule() {
+            let modelo = document.getElementById("modelo").value
+            let preco = Number(document.getElementById("preco").value)
+            let par = Number(document.getElementById("parcela").value)
+
+            if (par <= 4) {
+                resultado.innerHTML = `O preço do seu carro ${modelo} não precisará pagar parcelas.`
+            }
+            else if (par <= 12) {
+                let juros = (preco * 25) / 100
+                resultado.innerHTML = `O preço do seu carro ${modelo} com 25% de juros ficaráR$${(preco + juros).toFixed(2)} e cada parcela ficará R$${((preco + juros) / par).toFixed(2)}`
+            }
+            else if (par <= 24) {
+                let juros = (preco * 60) / 100
+                resultado.innerHTML = `O preço do seu ${modelo} com 60% de juros ficará R$${(preco + juros).toFixed(2)} e cada parcela ficará R$${((preco + juros) / par).toFixed(2)}`
+            }
+            else if (par <= 36) {
+                let juros = (preco * 80) / 100
+                resultado.innerHTML = `O preço do seu ${modelo} com 80% de juros ficará R$${(preco + juros).toFixed(2)} e cada parcela ficará R$${((preco + juros) / par).toFixed(2)}`
+            }
+            
+            return false
+        }
+    </script>
+</body>
+</html>
